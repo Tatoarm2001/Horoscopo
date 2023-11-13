@@ -1,7 +1,7 @@
-package com.proyectsfromzero.horoscapp.data.provider
+package com.proyectsfromzero.horoscapp.domain.model
 
-import com.proyectsfromzero.horoscapp.domain.model.HoroscopeInfo
-import com.proyectsfromzero.horoscapp.domain.model.HoroscopeInfo.*
+import com.proyectsfromzero.horoscapp.data.providers.HoroscopeInfo
+import com.proyectsfromzero.horoscapp.data.providers.HoroscopeInfo.*
 import javax.inject.Inject
 
 

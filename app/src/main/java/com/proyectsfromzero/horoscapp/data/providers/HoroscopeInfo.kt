@@ -1,9 +1,9 @@
-package com.proyectsfromzero.horoscapp.domain.model
+package com.proyectsfromzero.horoscapp.data.providers
 
 import com.proyectsfromzero.horoscapp.R
 
 sealed class HoroscopeInfo(val img:Int, val name:Int){
-    data object Aries:HoroscopeInfo(R.drawable.aries, R.string.aries)
+    data object Aries: HoroscopeInfo(R.drawable.aries, R.string.aries)
     data object Taurus: HoroscopeInfo(R.drawable.tauro, R.string.taurus)
     data object Gemini: HoroscopeInfo(R.drawable.geminis, R.string.gemini)
     data object Cancer: HoroscopeInfo(R.drawable.cancer, R.string.cancer)
