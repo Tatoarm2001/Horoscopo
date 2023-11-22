@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-    id ("androidx.navigation.safeargs.kotlin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -21,24 +21,36 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            resValue("string", "tatoname", "HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
+        }
+        getByName("debug"){
+            isDebuggable = true
+            resValue("string", "tatoname", "[DEBUG] HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro-debug.vercel.app/\"")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -61,9 +73,10 @@ dependencies {
     //DaggerHilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
 
     //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.3.1")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
 }
